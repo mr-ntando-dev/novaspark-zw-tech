@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: transparent; width: 600px; height: 200px; overflow: hidden; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600&display=swap');
+
+  .logo-wrap {
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 28px;
+    font-family: 'Orbitron', monospace;
+  }
+
+  /* ── Icon mark ── */
+  .icon {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+  .hex-bg {
+    width: 120px;
+    height: 120px;
+  }
+  .bolt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    width: 44px;
+    height: 44px;
+  }
+
+  /* ── Wordmark ── */
+  .wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1;
+  }
+  .name-top {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 36px;
+    letter-spacing: 0.12em;
+    background: linear-gradient(90deg, #00e5ff 0%, #7c4dff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  .name-top span {
+    background: linear-gradient(90deg, #7c4dff 0%, #ff1744 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .name-sub {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.38em;
+    color: #94a3b8;
+    text-transform: uppercase;
+    padding-left: 3px;
+  }
+  .divider {
+    width: 100%;
+    height: 1.5px;
+    background: linear-gradient(90deg, rgba(0,229,255,0.8), rgba(124,77,255,0.4), transparent);
+    margin: 5px 0 4px;
+    border-radius: 2px;
+  }
+  .tagline {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: #475569;
+    text-transform: uppercase;
+    padding-left: 3px;
+  }
+</style>
+</head>
+<body>
+<div class="logo-wrap">
+
+  <!-- Hexagon icon with lightning bolt -->
+  <div class="icon">
+    <svg class="hex-bg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#7c4dff" stop-opacity="0.22"/>
+        </linearGradient>
+        <linearGradient id="strokeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#00e5ff"/>
+          <stop offset="100%" stop-color="#7c4dff"/>
+        </linearGradient>
+        <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#00e5ff"/>
+          <stop offset="60%" stop-color="#7c4dff"/>
+          <stop offset="100%" stop-color="#ff1744"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Outer hex ring -->
+      <polygon
+        points="60,6 109,33 109,87 60,114 11,87 11,33"
+        fill="url(#hexGrad)"
+        stroke="url(#strokeGrad)"
+        stroke-width="2"
+        filter="url(#glow)"
+      />
+
+      <!-- Inner hex (subtle) -->
+      <polygon
+        points="60,20 95,40 95,80 60,100 25,80 25,40"
+        fill="none"
+        stroke="url(#strokeGrad)"
+        stroke-width="0.6"
+        opacity="0.35"
+      />
+
+      <!-- Corner accent dots -->
+      <circle cx="60" cy="6"   r="2.5" fill="#00e5ff" opacity="0.9" filter="url(#glow)"/>
+      <circle cx="109" cy="33" r="2.5" fill="#7c4dff" opacity="0.9" filter="url(#glow)"/>
+      <circle cx="109" cy="87" r="2.5" fill="#7c4dff" opacity="0.7"/>
+      <circle cx="60" cy="114" r="2.5" fill="#ff1744" opacity="0.8" filter="url(#glow)"/>
+      <circle cx="11" cy="87"  r="2.5" fill="#ff1744" opacity="0.6"/>
+      <circle cx="11" cy="33"  r="2.5" fill="#00e5ff" opacity="0.7"/>
+
+      <!-- Lightning bolt -->
+      <polygon
+        points="67,24 46,65 61,65 53,96 74,55 59,55"
+        fill="url(#boltGrad)"
+        filter="url(#glow)"
+      />
+    </svg>
+  </div>
+
+  <!-- Wordmark -->
+  <div class="wordmark">
+    <div class="name-top">NOVA<span>SPARK</span></div>
+    <div class="divider"></div>
+    <div class="name-sub">_ZW &nbsp;TECH</div>
+    <div class="tagline">Bot Hosting &nbsp;·&nbsp; Dev &nbsp;·&nbsp; Domains &nbsp;·&nbsp; Web</div>
+  </div>
+
+</div>
+</body>
+</html>

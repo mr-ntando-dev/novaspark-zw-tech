@@ -7,7 +7,13 @@
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": ["bot-hosting", "web-development", "domains", "zimbabwe", "tech"],
+  "keywords": [
+    "bot-hosting",
+    "web-development",
+    "domains",
+    "zimbabwe",
+    "tech"
+  ],
   "author": "Ntandoyenkosi Chisaya",
   "license": "MIT",
   "dependencies": {
