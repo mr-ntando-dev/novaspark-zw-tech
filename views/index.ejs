@@ -74,11 +74,11 @@
       <!-- STATS -->
       <div class="stats-bar">
         <div class="stat-item">
-          <div class="stat-number">99.9%</div>
+          <div class="stat-number"><span class="counter" data-target="99" data-suffix=".9%">0</span></div>
           <div class="stat-label">Uptime</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">500+</div>
+          <div class="stat-number"><span class="counter" data-target="500" data-suffix="+">0</span></div>
           <div class="stat-label">Bots Hosted</div>
         </div>
         <div class="stat-item">
@@ -86,12 +86,34 @@
           <div class="stat-label">Support</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number">50+</div>
+          <div class="stat-number"><span class="counter" data-target="80" data-suffix="+">0</span></div>
           <div class="stat-label">Happy Clients</div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    // Animated counters triggered on scroll
+    const counters = document.querySelectorAll('.counter');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || '';
+        let current = 0;
+        const step = Math.max(1, Math.ceil(target / 60));
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current + suffix;
+          if (current >= target) clearInterval(timer);
+        }, 20);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(c => io.observe(c));
+  </script>
 
   <!-- CTA -->
   <section class="section">

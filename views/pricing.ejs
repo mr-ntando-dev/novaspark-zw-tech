@@ -102,4 +102,79 @@
     </div>
   </section>
 
+  <!-- QUOTE CALCULATOR -->
+  <section class="section">
+    <div class="container" style="max-width: 720px;">
+      <div class="section-header">
+        <h2>Get an Instant <span class="highlight">Quote</span></h2>
+        <p>Select what you need and we'll estimate the cost on the spot.</p>
+      </div>
+
+      <div style="background:#111827;border:1px solid rgba(0,229,255,.15);border-radius:16px;padding:2.5rem">
+
+        <div class="calc-section">
+          <h4 class="calc-label">What do you need?</h4>
+          <div class="calc-options" id="serviceGroup">
+            <label class="calc-opt"><input type="checkbox" value="5" onchange="calcTotal()"> Bot Hosting (Starter) <span>$5/mo</span></label>
+            <label class="calc-opt"><input type="checkbox" value="15" onchange="calcTotal()"> Bot Hosting (Pro) <span>$15/mo</span></label>
+            <label class="calc-opt"><input type="checkbox" value="20" onchange="calcTotal()"> Bot Development (Simple) <span>from $20</span></label>
+            <label class="calc-opt"><input type="checkbox" value="50" onchange="calcTotal()"> Bot Development (Advanced) <span>from $50</span></label>
+            <label class="calc-opt"><input type="checkbox" value="12" onchange="calcTotal()"> Domain (.com, 1yr) <span>$12</span></label>
+            <label class="calc-opt"><input type="checkbox" value="25" onchange="calcTotal()"> Domain (.co.zw, 1yr) <span>$25</span></label>
+            <label class="calc-opt"><input type="checkbox" value="30" onchange="calcTotal()"> Landing Page <span>from $30</span></label>
+            <label class="calc-opt"><input type="checkbox" value="80" onchange="calcTotal()"> Business Website <span>from $80</span></label>
+            <label class="calc-opt"><input type="checkbox" value="150" onchange="calcTotal()"> E-Commerce Site <span>from $150</span></label>
+            <label class="calc-opt"><input type="checkbox" value="20" onchange="calcTotal()"> YouTube Monitoring <span>$20/mo</span></label>
+          </div>
+        </div>
+
+        <div class="calc-section">
+          <h4 class="calc-label">Number of bots / sites</h4>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <input type="range" id="quantity" min="1" max="10" value="1" oninput="updateQty(this); calcTotal()" style="flex:1;accent-color:var(--primary)">
+            <span id="qtyDisplay" style="font-family:var(--font-display);color:var(--primary);font-size:1.2rem;min-width:30px">1</span>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;padding:1.5rem;background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.2);border-radius:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+          <div>
+            <div style="color:var(--text-dim);font-size:.85rem;margin-bottom:.25rem">ESTIMATED TOTAL</div>
+            <div id="totalPrice" style="font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--primary)">$0</div>
+            <div id="totalNote" style="color:var(--text-dim);font-size:.82rem;margin-top:.25rem">Select services above</div>
+          </div>
+          <a href="https://wa.me/263786831091?text=Hi!%20I%20used%20your%20quote%20calculator%20and%20I%27m%20interested%20in%20a%20custom%20quote." target="_blank" class="btn-primary">Get Exact Quote →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .calc-section { margin-bottom: 1.75rem; }
+    .calc-label { font-family: var(--font-display); font-size: .85rem; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1rem; }
+    .calc-options { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .6rem; }
+    .calc-opt { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .75rem 1rem; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 8px; cursor: pointer; font-size: .95rem; transition: .15s; }
+    .calc-opt:hover { border-color: rgba(0,229,255,.25); background: rgba(0,229,255,.04); }
+    .calc-opt input { accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; }
+    .calc-opt span { color: var(--primary); font-weight: 600; font-size: .9rem; white-space: nowrap; }
+    .calc-opt:has(input:checked) { border-color: rgba(0,229,255,.4); background: rgba(0,229,255,.07); }
+  </style>
+
+  <script>
+    function updateQty(el) { document.getElementById('qtyDisplay').textContent = el.value; }
+    function calcTotal() {
+      const boxes = document.querySelectorAll('#serviceGroup input:checked');
+      const qty = +document.getElementById('quantity').value;
+      let total = 0;
+      boxes.forEach(b => total += +b.value);
+      total *= qty;
+      document.getElementById('totalPrice').textContent = '
+ + total.toLocaleString();
+      const recurring = [...boxes].some(b => [5,15,20].includes(+b.value));
+      document.getElementById('totalNote').textContent = total === 0
+        ? 'Select services above'
+        : (recurring ? '* Recurring items billed monthly' : 'One-time estimate');
+    }
+  </script>
+
 <%- include('partials/footer') %>

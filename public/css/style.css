@@ -202,6 +202,20 @@ body {
   width: 100%;
 }
 
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  background: rgba(0,230,118,.08);
+  border: 1px solid rgba(0,230,118,.25);
+  border-radius: 99px;
+  padding: .3rem .85rem;
+  color: var(--success) !important;
+  font-size: .85rem !important;
+  font-weight: 600 !important;
+}
+.status-pill::after { display: none !important; }
+
 .nav-cta {
   padding: 0.6rem 1.5rem;
   background: var(--gradient-1);

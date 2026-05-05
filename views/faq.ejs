@@ -1,0 +1,189 @@
+<%- include('partials/header') %>
+
+  <section class="section" style="padding-top: 8rem;">
+    <div class="container" style="max-width: 800px;">
+      <div class="section-header">
+        <h2>Frequently Asked <span class="highlight">Questions</span></h2>
+        <p>Everything you need to know about NOVASPARK_ZW services. Can't find your answer? <a href="/contact" style="color:var(--primary)">Contact us.</a></p>
+      </div>
+
+      <div class="faq-group">
+        <h3 class="faq-category">🤖 Bot Hosting</h3>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            What types of bots can I host?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>We host WhatsApp bots (Baileys, WWebJS, official API), Telegram bots, Discord bots, Slack bots, and custom Node.js or Python scripts. If it runs as a Node.js or Python process, we can host it.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            What happens if my bot crashes?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>All bots are monitored with auto-restart. If your bot process crashes, our system detects it within seconds and automatically restarts it. You'll get a notification via WhatsApp or email so you always know what's happening.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Can I deploy from GitHub automatically?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes — on our Professional and Enterprise plans, you can connect your GitHub repo. Every push to your main branch triggers an automatic deploy, so your bot always runs the latest version without manual intervention.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            How do I access logs for my bot?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Your dashboard includes real-time log streaming. You can view stdout/stderr, filter by time, and download log archives. On Professional+ plans, logs are retained for 30 days.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3 class="faq-category">🌐 Domains & Hosting</h3>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            How long does domain registration take?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Most domains (.com, .net, .org) are registered and active within 15–30 minutes. .co.zw domains typically take 1–2 business days due to ZISPA registry processing. We'll send you confirmation and login details as soon as it's live.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Is SSL (HTTPS) included with hosting?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. All hosting plans include free SSL certificates via Let's Encrypt, automatically installed and renewed. Your site gets HTTPS from day one at no extra cost.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Can I transfer an existing domain to NOVASPARK?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. We handle domain transfers from other registrars. Just unlock your domain at the current registrar, get the EPP/auth code, and send it to us. We'll complete the transfer — usually within 5–7 days.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3 class="faq-category">💻 Development</h3>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            How long does it take to build a bot?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Simple bots (auto-reply, basic menu) take 1–3 days. Medium bots with database integration, payment processing, or multi-step flows take 5–10 days. Complex enterprise bots with custom APIs and advanced logic take 2–4 weeks. We give you a timeline before we start.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Do you provide source code after development?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. You own the code. We deliver the full source code to your GitHub repo or as a zip file. No lock-in. We also offer optional maintenance retainers if you want us to keep managing updates.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            What payment methods do you integrate?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>We integrate EcoCash, ZimSwitch, PayPal, Stripe, and manual bank transfer confirmation flows. For ZW clients, EcoCash and ZimSwitch are most popular. International clients typically use PayPal or Stripe.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <h3 class="faq-category">💰 Billing & Support</h3>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            How do I pay for services?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>We accept EcoCash, PayPal, bank transfer (ZWL and USD), and cash for in-person clients in Zimbabwe. Monthly hosting is billed on the same date each month. Development projects are usually 50% upfront, 50% on delivery.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            What's your support response time?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Starter plan: community support via WhatsApp group, 24–48hr response. Professional plan: priority support, under 24hr response. Enterprise plan: dedicated support, under 1hr response. Critical outages are treated as emergencies on all paid plans.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Can I cancel my hosting plan anytime?
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. No contracts, no cancellation fees. Just message us before your next billing date. We'll give you your data/files and cancel the plan. We'd prefer you stay — but we won't hold you hostage.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Still have questions CTA -->
+      <div style="margin-top:3rem;text-align:center;padding:2.5rem;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.15);border-radius:16px">
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:.75rem">Still have questions?</h3>
+        <p style="color:var(--text-dim);margin-bottom:1.5rem">Message us on WhatsApp — we usually reply within minutes.</p>
+        <a href="https://wa.me/263786831091?text=Hi%20NOVASPARK_ZW!%20I%20have%20a%20question" target="_blank" class="btn-primary" style="margin-right:.75rem">💬 WhatsApp Us</a>
+        <a href="/contact" class="btn-secondary">Send a Message</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .faq-group { margin-bottom: 2.5rem; }
+    .faq-category { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--primary); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 1px solid rgba(0,229,255,.1); }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,.05); }
+    .faq-q { width: 100%; background: none; border: none; color: var(--text); font-family: var(--font-body); font-size: 1.05rem; font-weight: 600; padding: 1.15rem 0; text-align: left; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; transition: color .2s; }
+    .faq-q:hover { color: var(--primary); }
+    .faq-arrow { font-size: 1.1rem; color: var(--primary); transition: transform .3s; flex-shrink: 0; }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 0 1.25rem; }
+    .faq-a.show { display: block; }
+    .faq-a p { color: var(--text-dim); line-height: 1.8; }
+  </style>
+
+  <script>
+    function toggle(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-q.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('show'); });
+      if (!isOpen) { btn.classList.add('open'); answer.classList.add('show'); }
+    }
+  </script>
+
+<%- include('partials/footer') %>

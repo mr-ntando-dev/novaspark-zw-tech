@@ -46,6 +46,50 @@
 
   <div class="toast" id="toast"></div>
 
+  <!-- Quick Quote Modal -->
+  <button id="quoteBtn" onclick="document.getElementById('quoteModal').style.display='flex'"
+    style="position:fixed;bottom:1.75rem;left:1.75rem;z-index:9998;background:linear-gradient(135deg,#00e5ff,#7c4dff);border:none;border-radius:99px;padding:.75rem 1.25rem;color:#fff;font-family:'Orbitron',monospace;font-size:.82rem;font-weight:700;cursor:pointer;letter-spacing:.05em;box-shadow:0 4px 20px rgba(0,229,255,.35);display:flex;align-items:center;gap:.5rem;transition:.25s">
+    💰 Quick Quote
+  </button>
+
+  <div id="quoteModal" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem">
+    <div style="background:#111827;border:1px solid rgba(0,229,255,.2);border-radius:16px;padding:2rem;width:100%;max-width:460px;position:relative">
+      <button onclick="document.getElementById('quoteModal').style.display='none'" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#94a3b8;font-size:1.4rem;cursor:pointer;line-height:1">✕</button>
+      <h3 style="font-family:'Orbitron',monospace;font-size:1.1rem;margin-bottom:.25rem;color:#fff">Quick Quote Request</h3>
+      <p style="color:#94a3b8;font-size:.9rem;margin-bottom:1.5rem">Tell us what you need — we'll reply on WhatsApp within 2 hours.</p>
+      <form id="quickQuoteForm">
+        <div style="display:flex;flex-direction:column;gap:.85rem">
+          <input type="text" name="name" placeholder="Your name *" required style="background:#1a2332;border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:.7rem 1rem;color:#e2e8f0;font-family:'Rajdhani',sans-serif;font-size:.95rem;outline:none">
+          <input type="tel" name="phone" placeholder="WhatsApp number *" required style="background:#1a2332;border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:.7rem 1rem;color:#e2e8f0;font-family:'Rajdhani',sans-serif;font-size:.95rem;outline:none">
+          <select name="service" required style="background:#1a2332;border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:.7rem 1rem;color:#e2e8f0;font-family:'Rajdhani',sans-serif;font-size:.95rem;outline:none;cursor:pointer">
+            <option value="">What do you need? *</option>
+            <option>Bot Hosting</option><option>Bot Development</option>
+            <option>Domain Registration</option><option>Website Hosting</option>
+            <option>Website Development</option><option>YouTube Monitoring</option>
+            <option>Digital Marketing</option><option>Something else</option>
+          </select>
+          <textarea name="details" placeholder="Brief description (optional)" rows="3" style="background:#1a2332;border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:.7rem 1rem;color:#e2e8f0;font-family:'Rajdhani',sans-serif;font-size:.95rem;outline:none;resize:vertical"></textarea>
+          <button type="submit" style="padding:.8rem;background:linear-gradient(135deg,#00e5ff,#7c4dff);border:none;border-radius:8px;color:#fff;font-family:'Orbitron',monospace;font-size:.85rem;font-weight:700;cursor:pointer;letter-spacing:.05em">Send Quote Request →</button>
+        </div>
+      </form>
+      <p id="qqMsg" style="margin-top:.75rem;text-align:center;font-size:.9rem;display:none"></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('quickQuoteForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this));
+      const msg = document.getElementById('qqMsg');
+      const res = await fetch('/quote', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      const json = await res.json();
+      msg.textContent = json.message;
+      msg.style.color = json.success ? 'var(--success)' : 'var(--warning)';
+      msg.style.display = 'block';
+      if(json.success){ this.reset(); setTimeout(()=>document.getElementById('quoteModal').style.display='none', 2500); }
+    });
+  </script>
+
   <!-- WhatsApp Floating Button -->
   <a href="https://wa.me/263786831091?text=Hi%20NOVASPARK_ZW!%20I%27d%20like%20to%20enquire%20about%20your%20services."
      target="_blank" rel="noopener" class="whatsapp-float" title="Chat with us on WhatsApp">

@@ -48,7 +48,10 @@ app.get('/services',(req, res) => res.render('services'));
 app.get('/pricing', (req, res) => res.render('pricing'));
 app.get('/careers', (req, res) => res.render('careers'));
 app.get('/contact', (req, res) => res.render('contact'));
-app.get('/blog',    (req, res) => res.render('blog'));
+app.get('/blog',      (req, res) => res.render('blog'));
+app.get('/portfolio', (req, res) => res.render('portfolio'));
+app.get('/status',    (req, res) => res.render('status'));
+app.get('/faq',       (req, res) => res.render('faq'));
 
 app.post('/careers/apply', upload.single('cv'), (req, res) => {
   if (!req.file) return res.status(400).json({ success: false, message: 'No file uploaded' });
@@ -90,6 +93,25 @@ app.post('/newsletter', (req, res) => {
   if (subscribers.includes(email)) return res.json({ success: false, message: 'Already subscribed!' });
   subscribers.push(email);
   res.json({ success: true, message: 'Subscribed! Welcome to NOVASPARK_ZW updates.' });
+});
+
+// Quick quote requests
+let quotes = [];
+app.post('/quote', (req, res) => {
+  const q = { id: Date.now(), ...req.body, date: new Date().toISOString() };
+  quotes.push(q);
+  contacts.push({
+    id: q.id,
+    name: q.name || 'Quote Request',
+    email: q.phone + ' (phone)',
+    phone: q.phone,
+    service: q.service,
+    message: 'QUICK QUOTE: ' + (q.details || 'No details'),
+    date: q.date,
+    read: false
+  });
+  console.log('New quote request:', q);
+  res.json({ success: true, message: "Quote received! We'll WhatsApp you within 2 hours." });
 });
 
 app.get('/admin/login', (req, res) => res.render('admin/login', { error: null }));

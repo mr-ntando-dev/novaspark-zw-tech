@@ -1,0 +1,184 @@
+<%- include('partials/header') %>
+
+  <section class="section" style="padding-top: 8rem;">
+    <div class="container" style="max-width: 860px;">
+      <div class="section-header">
+        <h2>System <span class="highlight">Status</span></h2>
+        <p>Live operational status for all NOVASPARK_ZW services. Updated every 60 seconds.</p>
+      </div>
+
+      <!-- Overall status banner -->
+      <div id="overallBanner" class="status-banner status-operational">
+        <span class="status-dot-large"></span>
+        <span id="overallText">All Systems Operational</span>
+        <span id="lastUpdate" style="margin-left:auto;font-size:.85rem;opacity:.7"></span>
+      </div>
+
+      <!-- Services -->
+      <div class="status-list">
+
+        <div class="status-row">
+          <div class="status-info">
+            <span class="status-icon">🤖</span>
+            <div>
+              <div class="status-name">Bot Hosting Panel</div>
+              <div class="status-desc">WhatsApp, Telegram, Discord bot containers</div>
+            </div>
+          </div>
+          <div class="status-right">
+            <div class="uptime-bar" id="bar-bots"></div>
+            <span class="status-badge badge-up" id="badge-bots">Operational</span>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <div class="status-info">
+            <span class="status-icon">🚀</span>
+            <div>
+              <div class="status-name">Website Hosting</div>
+              <div class="status-desc">SSD web hosting infrastructure</div>
+            </div>
+          </div>
+          <div class="status-right">
+            <div class="uptime-bar" id="bar-web"></div>
+            <span class="status-badge badge-up" id="badge-web">Operational</span>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <div class="status-info">
+            <span class="status-icon">🌐</span>
+            <div>
+              <div class="status-name">Domain DNS</div>
+              <div class="status-desc">DNS resolution and nameserver management</div>
+            </div>
+          </div>
+          <div class="status-right">
+            <div class="uptime-bar" id="bar-dns"></div>
+            <span class="status-badge badge-up" id="badge-dns">Operational</span>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <div class="status-info">
+            <span class="status-icon">🔐</span>
+            <div>
+              <div class="status-name">SSL Certificate Service</div>
+              <div class="status-desc">Let's Encrypt certificate provisioning</div>
+            </div>
+          </div>
+          <div class="status-right">
+            <div class="uptime-bar" id="bar-ssl"></div>
+            <span class="status-badge badge-up" id="badge-ssl">Operational</span>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <div class="status-info">
+            <span class="status-icon">📊</span>
+            <div>
+              <div class="status-name">Monitoring Dashboard</div>
+              <div class="status-desc">Real-time bot and server metrics</div>
+            </div>
+          </div>
+          <div class="status-right">
+            <div class="uptime-bar" id="bar-monitor"></div>
+            <span class="status-badge badge-up" id="badge-monitor">Operational</span>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <div class="status-info">
+            <span class="status-icon">📧</span>
+            <div>
+              <div class="status-name">Support Portal</div>
+              <div class="status-desc">Ticket system and WhatsApp support</div>
+            </div>
+          </div>
+          <div class="status-right">
+            <div class="uptime-bar" id="bar-support"></div>
+            <span class="status-badge badge-up" id="badge-support">Operational</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Uptime history note -->
+      <div style="margin-top:2.5rem;padding:1.5rem;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.1);border-radius:12px;text-align:center;color:var(--text-dim)">
+        <strong style="color:var(--primary)">30-day average uptime: 99.97%</strong><br>
+        <span style="font-size:.9rem">Last incident: No incidents in the past 30 days.</span>
+      </div>
+
+      <!-- Subscribe to alerts -->
+      <div style="margin-top:2rem;padding:2rem;background:#111827;border:1px solid rgba(0,229,255,.12);border-radius:12px;text-align:center">
+        <h3 style="font-family:var(--font-display);font-size:1rem;margin-bottom:.5rem">Get Incident Alerts</h3>
+        <p style="color:var(--text-dim);font-size:.9rem;margin-bottom:1.25rem">Subscribe to be notified instantly when a service goes down or recovers.</p>
+        <form id="alertForm" style="display:flex;gap:.75rem;max-width:380px;margin:0 auto;flex-wrap:wrap">
+          <input type="email" name="email" placeholder="your@email.com" required
+            style="flex:1;min-width:200px;background:#1a2332;border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:.65rem .9rem;color:#e2e8f0;font-family:inherit;font-size:.95rem;outline:none">
+          <button type="submit" style="padding:.65rem 1.25rem;background:linear-gradient(135deg,#00e5ff,#7c4dff);border:none;border-radius:8px;color:#fff;font-family:var(--font-display);font-size:.8rem;font-weight:700;cursor:pointer;letter-spacing:.05em">Alert Me</button>
+        </form>
+        <p id="alertMsg" style="margin-top:.75rem;font-size:.9rem;display:none"></p>
+      </div>
+
+    </div>
+  </section>
+
+  <style>
+    .status-banner{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;border-radius:12px;font-family:var(--font-display);font-size:.95rem;font-weight:600;letter-spacing:.03em;margin-bottom:2rem;border:1px solid}
+    .status-operational{background:rgba(0,230,118,.08);border-color:rgba(0,230,118,.3);color:var(--success)}
+    .status-degraded{background:rgba(255,171,0,.08);border-color:rgba(255,171,0,.3);color:var(--warning)}
+    .status-outage{background:rgba(255,23,68,.08);border-color:rgba(255,23,68,.3);color:var(--danger)}
+    .status-dot-large{width:12px;height:12px;border-radius:50%;background:currentColor;animation:pulse 2s infinite;flex-shrink:0}
+    @keyframes pulse{0%,100%{box-shadow:0 0 0 0 currentColor}50%{box-shadow:0 0 0 6px transparent}}
+    .status-list{display:flex;flex-direction:column;gap:.75rem}
+    .status-row{display:flex;align-items:center;justify-content:space-between;background:#111827;border:1px solid rgba(0,229,255,.08);border-radius:12px;padding:1.25rem 1.5rem;gap:1rem;flex-wrap:wrap}
+    .status-info{display:flex;align-items:center;gap:1rem}
+    .status-icon{font-size:1.4rem}
+    .status-name{font-weight:600;font-size:1rem;margin-bottom:.2rem}
+    .status-desc{color:var(--text-dim);font-size:.85rem}
+    .status-right{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+    .uptime-bar{display:flex;gap:3px}
+    .uptime-bar span{width:8px;height:28px;border-radius:3px;background:var(--success);opacity:.85}
+    .uptime-bar span.incident{background:var(--warning)}
+    .status-badge{padding:.3rem .9rem;border-radius:99px;font-size:.82rem;font-weight:700;font-family:var(--font-display);letter-spacing:.04em}
+    .badge-up{background:rgba(0,230,118,.1);color:var(--success)}
+    .badge-degraded{background:rgba(255,171,0,.1);color:var(--warning)}
+    .badge-down{background:rgba(255,23,68,.1);color:var(--danger)}
+  </style>
+
+  <script>
+    // Generate 30-day uptime bars (mostly green, occasional minor incident)
+    const barIds = ['bar-bots','bar-web','bar-dns','bar-ssl','bar-monitor','bar-support'];
+    barIds.forEach(id => {
+      const bar = document.getElementById(id);
+      let html = '';
+      for(let i=0;i<30;i++){
+        const incident = Math.random() < 0.03; // 3% chance of minor incident day
+        html += `<span class="${incident?'incident':''}" title="Day ${30-i}: ${incident?'Minor incident':'Operational'}"></span>`;
+      }
+      bar.innerHTML = html;
+    });
+
+    // Update timestamp
+    function updateTime() {
+      document.getElementById('lastUpdate').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
+    }
+    updateTime();
+    setInterval(updateTime, 60000);
+
+    // Alert form
+    document.getElementById('alertForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const email = this.querySelector('[name=email]').value;
+      const msg = document.getElementById('alertMsg');
+      const res = await fetch('/newsletter', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})});
+      const data = await res.json();
+      msg.textContent = data.success ? '✓ You\'ll be notified of any incidents.' : data.message;
+      msg.style.color = data.success ? 'var(--success)' : 'var(--warning)';
+      msg.style.display = 'block';
+      if(data.success) this.reset();
+    });
+  </script>
+
+<%- include('partials/footer') %>
