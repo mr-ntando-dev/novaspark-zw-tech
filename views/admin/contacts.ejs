@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages — NOVASPARK_ZW Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <%- include('layout') %>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-logo">NOVASPARK_ZW <span>Admin Panel</span></div>
+    <div class="sidebar-nav">
+      <a href="/admin" class="nav-item">🏠 Dashboard</a>
+      <a href="/admin/applications" class="nav-item">📄 Applications</a>
+      <a href="/admin/contacts" class="nav-item active">💬 Messages</a>
+      <a href="/admin/subscribers" class="nav-item">📧 Subscribers</a>
+      <a href="/" class="nav-item" target="_blank">🌐 View Site</a>
+      <a href="/admin/logout" class="nav-item" style="color:#ff5252">🚪 Logout</a>
+    </div>
+  </nav>
+  <main class="main">
+    <div class="page-title">💬 Contact Messages (<%= contacts.length %>)</div>
+    <% if(contacts.length === 0){ %>
+      <div class="card"><p class="empty">No messages yet.</p></div>
+    <% } else { %>
+      <% contacts.slice().reverse().forEach(c => { %>
+      <div class="card" style="margin-bottom:1rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem">
+          <div>
+            <strong style="font-size:1.1rem"><%=c.name%></strong>
+            <span style="color:#94a3b8;margin-left:.75rem"><%=c.email%></span>
+            <% if(c.phone){ %><span style="color:#94a3b8;margin-left:.75rem">📞 <%=c.phone%></span><% } %>
+          </div>
+          <div style="display:flex;gap:.5rem;align-items:center">
+            <% if(c.service){ %><span style="background:rgba(0,229,255,.08);color:#00e5ff;padding:.2rem .6rem;border-radius:99px;font-size:.8rem"><%=c.service%></span><% } %>
+            <span style="color:#94a3b8;font-size:.85rem"><%=new Date(c.date).toLocaleDateString('en-GB')%></span>
+          </div>
+        </div>
+        <p style="color:#cbd5e1;line-height:1.6;background:#1a2332;border-radius:8px;padding:1rem"><%=c.message%></p>
+        <div style="margin-top:.75rem">
+          <a href="mailto:<%=c.email%>?subject=Re: Your enquiry to NOVASPARK_ZW" class="btn-sm btn-primary">↩ Reply via Email</a>
+        </div>
+      </div>
+      <% }) %>
+    <% } %>
+  </main>
+</body>
+</html>

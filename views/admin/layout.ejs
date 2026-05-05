@@ -1,0 +1,35 @@
+<!-- Admin shared CSS + nav snippet — included by other admin views -->
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0e17;color:#e2e8f0;font-family:'Rajdhani',sans-serif;min-height:100vh;display:flex}
+  .sidebar{width:240px;background:#111827;border-right:1px solid rgba(0,229,255,.1);padding:1.5rem 0;flex-shrink:0;position:fixed;top:0;left:0;height:100vh;overflow-y:auto;z-index:100}
+  .sidebar-logo{font-family:'Orbitron',monospace;font-size:1rem;font-weight:900;color:#00e5ff;padding:0 1.5rem 1.5rem;border-bottom:1px solid rgba(0,229,255,.08)}
+  .sidebar-logo span{display:block;font-family:'Rajdhani',sans-serif;font-size:.8rem;color:#94a3b8;font-weight:400;margin-top:.2rem}
+  .sidebar-nav{padding:1rem 0}
+  .nav-item{display:flex;align-items:center;gap:.75rem;padding:.7rem 1.5rem;color:#94a3b8;text-decoration:none;font-size:1rem;font-weight:500;transition:.2s;border-left:3px solid transparent}
+  .nav-item:hover,.nav-item.active{color:#00e5ff;background:rgba(0,229,255,.05);border-left-color:#00e5ff}
+  .nav-item .badge{margin-left:auto;background:#ff1744;color:#fff;border-radius:99px;padding:.1rem .5rem;font-size:.75rem;font-weight:700}
+  .main{margin-left:240px;flex:1;padding:2rem}
+  .page-title{font-family:'Orbitron',monospace;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:2rem}
+  .card{background:#111827;border:1px solid rgba(0,229,255,.1);border-radius:12px;padding:1.5rem}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+  .stat-card{background:#111827;border:1px solid rgba(0,229,255,.1);border-radius:12px;padding:1.5rem;text-align:center}
+  .stat-val{font-family:'Orbitron',monospace;font-size:2rem;font-weight:700;color:#00e5ff}
+  .stat-lbl{color:#94a3b8;font-size:.9rem;margin-top:.3rem}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;padding:.75rem 1rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;border-bottom:1px solid rgba(0,229,255,.1)}
+  td{padding:.75rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);font-size:.95rem;vertical-align:middle}
+  tr:last-child td{border-bottom:none}
+  tr:hover td{background:rgba(0,229,255,.03)}
+  .badge-status{display:inline-block;padding:.25rem .75rem;border-radius:99px;font-size:.8rem;font-weight:600}
+  .badge-new{background:rgba(0,229,255,.1);color:#00e5ff}
+  .badge-reviewed{background:rgba(255,171,0,.1);color:#ffab00}
+  .badge-shortlisted{background:rgba(0,230,118,.1);color:#00e676}
+  .badge-rejected{background:rgba(255,23,68,.1);color:#ff5252}
+  .btn-sm{padding:.35rem .8rem;border-radius:6px;font-size:.85rem;font-weight:600;cursor:pointer;border:none;font-family:inherit;text-decoration:none;display:inline-block;transition:.15s}
+  .btn-primary{background:linear-gradient(135deg,#00e5ff,#7c4dff);color:#fff}
+  .btn-danger{background:rgba(255,23,68,.15);color:#ff5252;border:1px solid rgba(255,23,68,.2)}
+  .btn-ghost{background:rgba(0,229,255,.08);color:#00e5ff;border:1px solid rgba(0,229,255,.2)}
+  .empty{text-align:center;color:#94a3b8;padding:3rem;font-size:1rem}
+  select.status-select{background:#1a2332;border:1px solid rgba(0,229,255,.2);border-radius:6px;color:#e2e8f0;padding:.3rem .6rem;font-family:inherit;cursor:pointer}
+</style>

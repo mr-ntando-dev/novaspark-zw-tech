@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — NOVASPARK_ZW</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <%- include('layout') %>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-logo">NOVASPARK_ZW <span>Admin Panel</span></div>
+    <div class="sidebar-nav">
+      <a href="/admin" class="nav-item active">🏠 Dashboard</a>
+      <a href="/admin/applications" class="nav-item">📄 Applications <% if(newApps>0){%><span class="badge"><%=newApps%></span><%}%></a>
+      <a href="/admin/contacts" class="nav-item">💬 Messages <% if(newContacts>0){%><span class="badge"><%=newContacts%></span><%}%></a>
+      <a href="/admin/subscribers" class="nav-item">📧 Subscribers</a>
+      <a href="/" class="nav-item" target="_blank">🌐 View Site</a>
+      <a href="/admin/logout" class="nav-item" style="margin-top:auto;color:#ff5252">🚪 Logout</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="page-title">📊 Dashboard Overview</div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-val"><%=applications.length%></div>
+        <div class="stat-lbl">Total Applications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val" style="color:#ffab00"><%=newApps%></div>
+        <div class="stat-lbl">New (Unreviewed)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val" style="color:#00e676"><%=contacts.length%></div>
+        <div class="stat-lbl">Contact Messages</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val" style="color:#b388ff"><%=subscribers.length%></div>
+        <div class="stat-lbl">Subscribers</div>
+      </div>
+    </div>
+
+    <!-- Recent Applications -->
+    <div class="card" style="margin-bottom:1.5rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+        <h3 style="font-family:'Orbitron',monospace;font-size:1rem;color:#fff">Recent Applications</h3>
+        <a href="/admin/applications" class="btn-sm btn-ghost">View All →</a>
+      </div>
+      <% if(applications.length === 0){ %>
+        <p class="empty">No applications yet.</p>
+      <% } else { %>
+      <table>
+        <thead><tr><th>Name</th><th>Position</th><th>Date</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <% applications.slice(-5).reverse().forEach(a => { %>
+          <tr>
+            <td><strong><%=a.name%></strong><br><span style="color:#94a3b8;font-size:.85rem"><%=a.email%></span></td>
+            <td><%=a.position%></td>
+            <td style="color:#94a3b8;font-size:.85rem"><%=new Date(a.date).toLocaleDateString()%></td>
+            <td><span class="badge-status badge-<%=a.status%>"><%=a.status%></span></td>
+            <td><a href="/admin/cv/<%=a.file%>" class="btn-sm btn-ghost">⬇ CV</a></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+
+    <!-- Recent Messages -->
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+        <h3 style="font-family:'Orbitron',monospace;font-size:1rem;color:#fff">Recent Messages</h3>
+        <a href="/admin/contacts" class="btn-sm btn-ghost">View All →</a>
+      </div>
+      <% if(contacts.length === 0){ %>
+        <p class="empty">No messages yet.</p>
+      <% } else { %>
+      <table>
+        <thead><tr><th>Name</th><th>Email</th><th>Service</th><th>Date</th></tr></thead>
+        <tbody>
+          <% contacts.slice(-5).reverse().forEach(c => { %>
+          <tr>
+            <td><strong><%=c.name%></strong></td>
+            <td style="color:#94a3b8"><%=c.email%></td>
+            <td><%=c.service||'General'%></td>
+            <td style="color:#94a3b8;font-size:.85rem"><%=new Date(c.date).toLocaleDateString()%></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </main>
+
+</body>
+</html>

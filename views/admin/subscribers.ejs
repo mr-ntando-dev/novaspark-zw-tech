@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscribers — NOVASPARK_ZW Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <%- include('layout') %>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-logo">NOVASPARK_ZW <span>Admin Panel</span></div>
+    <div class="sidebar-nav">
+      <a href="/admin" class="nav-item">🏠 Dashboard</a>
+      <a href="/admin/applications" class="nav-item">📄 Applications</a>
+      <a href="/admin/contacts" class="nav-item">💬 Messages</a>
+      <a href="/admin/subscribers" class="nav-item active">📧 Subscribers</a>
+      <a href="/" class="nav-item" target="_blank">🌐 View Site</a>
+      <a href="/admin/logout" class="nav-item" style="color:#ff5252">🚪 Logout</a>
+    </div>
+  </nav>
+  <main class="main">
+    <div class="page-title">📧 Newsletter Subscribers (<%= subscribers.length %>)</div>
+    <div class="card">
+      <% if(subscribers.length === 0){ %>
+        <p class="empty">No subscribers yet. The newsletter signup form on the homepage will populate this list.</p>
+      <% } else { %>
+        <table>
+          <thead><tr><th>#</th><th>Email Address</th><th>Action</th></tr></thead>
+          <tbody>
+            <% subscribers.forEach((email, i) => { %>
+            <tr>
+              <td style="color:#94a3b8"><%=i+1%></td>
+              <td><%=email%></td>
+              <td><a href="mailto:<%=email%>" class="btn-sm btn-ghost">📨 Email</a></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(0,229,255,.08)">
+          <a href="mailto:?bcc=<%=subscribers.join(',')%>&subject=NOVASPARK_ZW Update" class="btn-sm btn-primary">📤 Email All Subscribers</a>
+        </div>
+      <% } %>
+    </div>
+  </main>
+</body>
+</html>

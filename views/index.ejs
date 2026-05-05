@@ -105,4 +105,71 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Clients <span class="highlight">Say</span></h2>
+        <p>Real feedback from real businesses we've built for.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" style="cursor:default">
+          <div style="font-size:1.5rem;margin-bottom:1rem">⭐⭐⭐⭐⭐</div>
+          <p style="font-style:italic;color:var(--text-dim);margin-bottom:1rem">"Our WhatsApp bot has been running non-stop for 3 months. Zero downtime. NOVASPARK just works."</p>
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--gradient-1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem">TM</div>
+            <div><strong>Tatenda M.</strong><br><span style="color:var(--text-dim);font-size:.85rem">E-Commerce Owner, Harare</span></div>
+          </div>
+        </div>
+        <div class="service-card" style="cursor:default">
+          <div style="font-size:1.5rem;margin-bottom:1rem">⭐⭐⭐⭐⭐</div>
+          <p style="font-style:italic;color:var(--text-dim);margin-bottom:1rem">"Got my .co.zw domain and a full website live in 2 days. The team is fast, responsive, and actually knows what they're doing."</p>
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--gradient-2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem">SN</div>
+            <div><strong>Simba N.</strong><br><span style="color:var(--text-dim);font-size:.85rem">Startup Founder, Bulawayo</span></div>
+          </div>
+        </div>
+        <div class="service-card" style="cursor:default">
+          <div style="font-size:1.5rem;margin-bottom:1rem">⭐⭐⭐⭐⭐</div>
+          <p style="font-style:italic;color:var(--text-dim);margin-bottom:1rem">"I'm a student developer and the internship here is the most real-world experience I've had. Proper production systems, not toy projects."</p>
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#00e676,#00b8d4);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem">KD</div>
+            <div><strong>Kudakwashe D.</strong><br><span style="color:var(--text-dim);font-size:.85rem">Intern Developer</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section">
+    <div class="container">
+      <div style="background:linear-gradient(135deg,rgba(0,229,255,.06),rgba(124,77,255,.08));border:1px solid rgba(0,229,255,.2);border-radius:16px;padding:3rem 2rem;text-align:center;max-width:640px;margin:0 auto">
+        <div style="font-size:2.5rem;margin-bottom:1rem">📬</div>
+        <h2 style="font-family:var(--font-display);font-size:1.6rem;margin-bottom:.75rem">Stay in the <span class="highlight">Loop</span></h2>
+        <p style="color:var(--text-dim);margin-bottom:2rem">Get product updates, tech tips, and NOVASPARK news delivered straight to your inbox. No spam, ever.</p>
+        <form id="newsletterForm" style="display:flex;gap:.75rem;max-width:400px;margin:0 auto;flex-wrap:wrap">
+          <input type="email" name="email" placeholder="your@email.com" required
+            style="flex:1;min-width:200px;background:rgba(26,35,50,.8);border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:.75rem 1rem;color:#e2e8f0;font-family:inherit;font-size:1rem;outline:none">
+          <button type="submit" class="btn-primary" style="padding:.75rem 1.5rem;border:none;border-radius:8px;font-family:var(--font-display);font-size:.85rem;font-weight:700;cursor:pointer;letter-spacing:.05em;background:linear-gradient(135deg,#00e5ff,#7c4dff);color:#fff">Subscribe</button>
+        </form>
+        <p id="newsMsg" style="margin-top:1rem;font-size:.9rem;display:none"></p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('newsletterForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const email = this.querySelector('input[name=email]').value;
+      const msg = document.getElementById('newsMsg');
+      const res = await fetch('/newsletter', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email}) });
+      const data = await res.json();
+      msg.textContent = data.message;
+      msg.style.display = 'block';
+      msg.style.color = data.success ? 'var(--success)' : 'var(--warning)';
+      if(data.success) this.reset();
+    });
+  </script>
+
 <%- include('partials/footer') %>

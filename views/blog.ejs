@@ -1,0 +1,95 @@
+<%- include('partials/header') %>
+
+  <section class="section" style="padding-top: 8rem;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Latest <span class="highlight">Updates</span></h2>
+        <p>News, tutorials, and insights from the NOVASPARK_ZW team.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card" style="cursor:default">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <span class="vacancy-tag">Bot Hosting</span>
+            <span style="color:var(--text-dim);font-size:.85rem">May 2025</span>
+          </div>
+          <h3 style="margin-bottom:.75rem">WhatsApp Bot Uptime Hits 99.97% This Quarter</h3>
+          <p>Our infrastructure upgrades have pushed average uptime to a new record. Here's what changed under the hood and what it means for your bots.</p>
+          <p style="margin-top:1rem;color:var(--primary);font-size:.9rem;cursor:pointer">Read more →</p>
+        </div>
+
+        <div class="service-card" style="cursor:default">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <span class="vacancy-tag" style="background:rgba(124,77,255,.1);color:var(--accent-glow)">Tutorial</span>
+            <span style="color:var(--text-dim);font-size:.85rem">Apr 2025</span>
+          </div>
+          <h3 style="margin-bottom:.75rem">How to Deploy a Telegram Bot in Under 10 Minutes</h3>
+          <p>Step-by-step guide to getting your Telegram bot live on NOVASPARK's hosting panel — from zero to production-ready.</p>
+          <p style="margin-top:1rem;color:var(--primary);font-size:.9rem;cursor:pointer">Read more →</p>
+        </div>
+
+        <div class="service-card" style="cursor:default">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <span class="vacancy-tag" style="background:rgba(0,230,118,.1);color:var(--success)">News</span>
+            <span style="color:var(--text-dim);font-size:.85rem">Mar 2025</span>
+          </div>
+          <h3 style="margin-bottom:.75rem">We Now Support .co.zw Domain Registration</h3>
+          <p>Zimbabwean businesses can now register and manage their .co.zw domains directly through the NOVASPARK panel. DNS, SSL, and renewals included.</p>
+          <p style="margin-top:1rem;color:var(--primary);font-size:.9rem;cursor:pointer">Read more →</p>
+        </div>
+
+        <div class="service-card" style="cursor:default">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <span class="vacancy-tag" style="background:rgba(255,171,0,.1);color:var(--warning)">Guide</span>
+            <span style="color:var(--text-dim);font-size:.85rem">Feb 2025</span>
+          </div>
+          <h3 style="margin-bottom:.75rem">5 Reasons Your Business Needs a WhatsApp Bot in 2025</h3>
+          <p>Customer expectations have shifted. Automated 24/7 WhatsApp support isn't a nice-to-have anymore — it's the baseline. Here's why.</p>
+          <p style="margin-top:1rem;color:var(--primary);font-size:.9rem;cursor:pointer">Read more →</p>
+        </div>
+
+        <div class="service-card" style="cursor:default">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <span class="vacancy-tag">Company</span>
+            <span style="color:var(--text-dim);font-size:.85rem">Jan 2025</span>
+          </div>
+          <h3 style="margin-bottom:.75rem">NOVASPARK_ZW is Open for Business 🚀</h3>
+          <p>We launched. This is the beginning. Our mission: make world-class tech infrastructure accessible to every Zimbabwean developer and business.</p>
+          <p style="margin-top:1rem;color:var(--primary);font-size:.9rem;cursor:pointer">Read more →</p>
+        </div>
+
+        <!-- Newsletter CTA inside blog -->
+        <div class="service-card" style="background:linear-gradient(135deg,rgba(0,229,255,.06),rgba(124,77,255,.06));border-color:rgba(0,229,255,.3)">
+          <div style="text-align:center;padding:1rem 0">
+            <div style="font-size:2.5rem;margin-bottom:1rem">📬</div>
+            <h3 style="margin-bottom:.75rem">Get Updates in Your Inbox</h3>
+            <p style="margin-bottom:1.5rem;color:var(--text-dim)">No spam. Just new posts, product updates, and tech tips from our team.</p>
+            <form id="blogNewsletterForm" style="display:flex;gap:.75rem;max-width:340px;margin:0 auto">
+              <input type="email" name="email" placeholder="your@email.com" required
+                style="flex:1;background:rgba(26,35,50,.8);border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:.65rem .9rem;color:#e2e8f0;font-family:inherit;font-size:.95rem;outline:none">
+              <button type="submit" class="btn-primary btn-sm" style="padding:.65rem 1rem">Subscribe</button>
+            </form>
+            <p id="blogNewsMsg" style="margin-top:.75rem;font-size:.9rem;display:none"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('blogNewsletterForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const email = this.querySelector('input[name=email]').value;
+      const msg = document.getElementById('blogNewsMsg');
+      const res = await fetch('/newsletter', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email}) });
+      const data = await res.json();
+      msg.textContent = data.message;
+      msg.style.display = 'block';
+      msg.style.color = data.success ? 'var(--success)' : 'var(--warning)';
+      if(data.success) this.reset();
+    });
+  </script>
+
+<%- include('partials/footer') %>

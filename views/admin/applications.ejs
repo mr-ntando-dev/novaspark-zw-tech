@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applications — NOVASPARK_ZW Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <%- include('layout') %>
+</head>
+<body>
+
+  <nav class="sidebar">
+    <div class="sidebar-logo">NOVASPARK_ZW <span>Admin Panel</span></div>
+    <div class="sidebar-nav">
+      <a href="/admin" class="nav-item">🏠 Dashboard</a>
+      <a href="/admin/applications" class="nav-item active">📄 Applications</a>
+      <a href="/admin/contacts" class="nav-item">💬 Messages</a>
+      <a href="/admin/subscribers" class="nav-item">📧 Subscribers</a>
+      <a href="/" class="nav-item" target="_blank">🌐 View Site</a>
+      <a href="/admin/logout" class="nav-item" style="color:#ff5252">🚪 Logout</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="page-title">📄 Job Applications (<%= applications.length %>)</div>
+
+    <% if(applications.length === 0){ %>
+      <div class="card"><p class="empty">No applications submitted yet. They'll appear here once candidates apply on the Careers page.</p></div>
+    <% } else { %>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Candidate</th>
+            <th>Phone</th>
+            <th>Position</th>
+            <th>Applied</th>
+            <th>Status</th>
+            <th>CV</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% applications.slice().reverse().forEach((a, i) => { %>
+          <tr id="row-<%=a.id%>">
+            <td style="color:#94a3b8;font-size:.85rem"><%=applications.length - i%></td>
+            <td>
+              <strong><%=a.name%></strong><br>
+              <a href="mailto:<%=a.email%>" style="color:#00e5ff;font-size:.85rem"><%=a.email%></a>
+            </td>
+            <td style="color:#94a3b8;font-size:.9rem"><%=a.phone||'—'%></td>
+            <td><%=a.position%></td>
+            <td style="color:#94a3b8;font-size:.85rem"><%=new Date(a.date).toLocaleDateString('en-GB')%></td>
+            <td>
+              <select class="status-select" onchange="updateStatus(<%=a.id%>, this.value)">
+                <option value="new"<%=a.status==='new'?' selected':''%>>🔵 New</option>
+                <option value="reviewed"<%=a.status==='reviewed'?' selected':''%>>🟡 Reviewed</option>
+                <option value="shortlisted"<%=a.status==='shortlisted'?' selected':''%>>🟢 Shortlisted</option>
+                <option value="rejected"<%=a.status==='rejected'?' selected':''%>>🔴 Rejected</option>
+              </select>
+            </td>
+            <td>
+              <a href="/admin/cv/<%=a.file%>" class="btn-sm btn-ghost" download>⬇ Download</a>
+            </td>
+            <td>
+              <button class="btn-sm btn-danger" onclick="deleteApp(<%=a.id%>)">🗑 Delete</button>
+            </td>
+          </tr>
+          <% if(a.message) { %>
+          <tr id="msg-<%=a.id%>">
+            <td colspan="8" style="padding:.5rem 1rem 1rem 3rem;color:#94a3b8;font-size:.9rem;font-style:italic;border-bottom:1px solid rgba(0,229,255,.06)">
+              💬 "<%=a.message%>"
+            </td>
+          </tr>
+          <% } %>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+  </main>
+
+  <script>
+    function updateStatus(id, status) {
+      fetch('/admin/applications/' + id + '/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status })
+      });
+    }
+    function deleteApp(id) {
+      if (!confirm('Delete this application? This cannot be undone.')) return;
+      fetch('/admin/applications/' + id, { method: 'DELETE' })
+        .then(() => {
+          document.getElementById('row-' + id)?.remove();
+          document.getElementById('msg-' + id)?.remove();
+        });
+    }
+  </script>
+</body>
+</html>
