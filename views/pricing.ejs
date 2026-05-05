@@ -1,0 +1,105 @@
+<%- include('partials/header') %>
+
+  <section class="section" style="padding-top: 8rem;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simple <span class="highlight">Pricing</span></h2>
+        <p>Transparent plans that grow with your needs. No hidden fees, no surprises.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter Plan -->
+        <div class="pricing-card">
+          <h3>Starter</h3>
+          <p style="color: var(--text-dim);">For individuals getting started</p>
+          <div class="pricing-amount">$5<span>/mo</span></div>
+          <ul class="pricing-features">
+            <li>1 Bot hosting slot</li>
+            <li>512MB RAM allocated</li>
+            <li>Basic monitoring dashboard</li>
+            <li>Auto-restart on crash</li>
+            <li>Community support</li>
+            <li>99% uptime SLA</li>
+          </ul>
+          <a href="/contact" class="btn-secondary" style="width: 100%; justify-content: center;">Get Started</a>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card featured">
+          <h3>Professional</h3>
+          <p style="color: var(--text-dim);">For serious developers</p>
+          <div class="pricing-amount">$15<span>/mo</span></div>
+          <ul class="pricing-features">
+            <li>5 Bot hosting slots</li>
+            <li>2GB RAM per bot</li>
+            <li>Advanced monitoring + logs</li>
+            <li>Custom domain support</li>
+            <li>Priority support (24hr response)</li>
+            <li>GitHub auto-deploy</li>
+            <li>Cron job scheduler</li>
+            <li>99.9% uptime SLA</li>
+          </ul>
+          <a href="/contact" class="btn-primary" style="width: 100%; justify-content: center;">Choose Pro</a>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card">
+          <h3>Enterprise</h3>
+          <p style="color: var(--text-dim);">For businesses at scale</p>
+          <div class="pricing-amount">$40<span>/mo</span></div>
+          <ul class="pricing-features">
+            <li>Unlimited bot hosting</li>
+            <li>8GB RAM per bot</li>
+            <li>Dedicated server resources</li>
+            <li>White-label panel</li>
+            <li>1-on-1 support (1hr response)</li>
+            <li>Custom integrations</li>
+            <li>API access</li>
+            <li>99.99% uptime SLA</li>
+          </ul>
+          <a href="/contact" class="btn-secondary" style="width: 100%; justify-content: center;">Contact Sales</a>
+        </div>
+      </div>
+
+      <!-- Other services pricing -->
+      <div style="margin-top: 5rem;">
+        <div class="section-header">
+          <h2>Other <span class="highlight">Services</span></h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Bot Development</h3>
+            <p style="color: var(--text-dim); margin-bottom: 1rem;">Custom pricing based on complexity</p>
+            <ul style="color: var(--text-dim); padding-left: 1.2rem; line-height: 2;">
+              <li>Simple bots: from $20</li>
+              <li>Advanced bots: from $50</li>
+              <li>Enterprise bots: from $150</li>
+              <li>Bot upgrades: from $10</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <h3>Domain Registration</h3>
+            <p style="color: var(--text-dim); margin-bottom: 1rem;">Annual pricing</p>
+            <ul style="color: var(--text-dim); padding-left: 1.2rem; line-height: 2;">
+              <li>.com domains: from $12/yr</li>
+              <li>.co.zw domains: from $25/yr</li>
+              <li>.io domains: from $35/yr</li>
+              <li>Other TLDs: ask for quote</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <h3>Website Development</h3>
+            <p style="color: var(--text-dim); margin-bottom: 1rem;">Project-based pricing</p>
+            <ul style="color: var(--text-dim); padding-left: 1.2rem; line-height: 2;">
+              <li>Landing pages: from $30</li>
+              <li>Business websites: from $80</li>
+              <li>E-commerce: from $150</li>
+              <li>Web apps: from $200</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<%- include('partials/footer') %>

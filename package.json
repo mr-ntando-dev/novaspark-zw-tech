@@ -1,0 +1,18 @@
+{
+  "name": "novaspark-zw-tech",
+  "version": "1.0.0",
+  "description": "NOVASPARK_ZW TECH - Bot Hosting, Development, Domains & More",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["bot-hosting", "web-development", "domains", "zimbabwe", "tech"],
+  "author": "Ntandoyenkosi Chisaya",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}

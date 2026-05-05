@@ -1,0 +1,114 @@
+<%- include('partials/header') %>
+
+  <section class="section" style="padding-top: 8rem;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Join <span class="highlight">Our Team</span></h2>
+        <p>We're actively recruiting students and junior developers. Real projects, real experience, real growth.</p>
+      </div>
+
+      <div class="careers-section">
+        <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 2rem;">Open Positions</h3>
+
+        <div class="vacancies-grid">
+          <div class="vacancy-card">
+            <h4>Junior Bot Developer</h4>
+            <p>Build and maintain WhatsApp/Telegram bots using Node.js. Learn production deployment and hosting infrastructure.</p>
+            <span class="vacancy-tag">Student Friendly</span>
+            <span class="vacancy-tag" style="background: rgba(124, 77, 255, 0.1); color: var(--accent-glow);">Remote</span>
+          </div>
+
+          <div class="vacancy-card">
+            <h4>Frontend Developer Intern</h4>
+            <p>Work on client websites and our internal dashboard. HTML/CSS/JS required. React knowledge is a plus.</p>
+            <span class="vacancy-tag">Student Friendly</span>
+            <span class="vacancy-tag" style="background: rgba(124, 77, 255, 0.1); color: var(--accent-glow);">Remote</span>
+          </div>
+
+          <div class="vacancy-card">
+            <h4>Digital Marketing Intern</h4>
+            <p>Help manage social media campaigns, create content, and analyze ad performance for our clients.</p>
+            <span class="vacancy-tag">Student Friendly</span>
+            <span class="vacancy-tag" style="background: rgba(124, 77, 255, 0.1); color: var(--accent-glow);">Remote</span>
+          </div>
+
+          <div class="vacancy-card">
+            <h4>YouTube Content Monitor</h4>
+            <p>Monitor client YouTube channels, generate reports, and manage notification systems.</p>
+            <span class="vacancy-tag">Student Friendly</span>
+            <span class="vacancy-tag" style="background: rgba(0, 230, 118, 0.1); color: var(--success);">Part-Time</span>
+          </div>
+
+          <div class="vacancy-card">
+            <h4>Technical Support Agent</h4>
+            <p>Provide support to clients via WhatsApp and email. Troubleshoot hosting and bot issues.</p>
+            <span class="vacancy-tag">Student Friendly</span>
+            <span class="vacancy-tag" style="background: rgba(0, 230, 118, 0.1); color: var(--success);">Part-Time</span>
+          </div>
+
+          <div class="vacancy-card">
+            <h4>Backend Developer</h4>
+            <p>Build APIs, manage databases, and maintain server infrastructure. Node.js and Python experience preferred.</p>
+            <span class="vacancy-tag" style="background: rgba(255, 171, 0, 0.1); color: var(--warning);">Mid-Level</span>
+            <span class="vacancy-tag" style="background: rgba(124, 77, 255, 0.1); color: var(--accent-glow);">Remote</span>
+          </div>
+        </div>
+
+        <!-- Application Form -->
+        <div style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid rgba(0, 229, 255, 0.08);">
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.5rem;">Apply Now</h3>
+          <p style="color: var(--text-dim); margin-bottom: 2rem;">Upload your CV and tell us about yourself. We review all applications within 48 hours.</p>
+
+          <form id="careerForm" enctype="multipart/form-data">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Your full name">
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+263 7X XXX XXXX">
+              </div>
+              <div class="form-group">
+                <label for="position">Position *</label>
+                <select id="position" name="position" required>
+                  <option value="">Select a position</option>
+                  <option value="junior-bot-dev">Junior Bot Developer</option>
+                  <option value="frontend-intern">Frontend Developer Intern</option>
+                  <option value="marketing-intern">Digital Marketing Intern</option>
+                  <option value="yt-monitor">YouTube Content Monitor</option>
+                  <option value="support-agent">Technical Support Agent</option>
+                  <option value="backend-dev">Backend Developer</option>
+                  <option value="other">Other / General Application</option>
+                </select>
+              </div>
+              <div class="form-group full-width">
+                <label>Upload CV (PDF or DOC, max 5MB) *</label>
+                <div class="file-upload" id="fileUpload">
+                  <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                  <p class="file-upload-text">
+                    <strong>Click to upload</strong> or drag and drop<br>
+                    <span style="font-size: 0.85rem;">PDF, DOC, or DOCX (max 5MB)</span>
+                  </p>
+                </div>
+                <p id="fileName" style="color: var(--success); margin-top: 0.5rem; display: none;"></p>
+              </div>
+              <div class="form-group full-width">
+                <label for="message">Tell us about yourself</label>
+                <textarea id="message" name="message" placeholder="Brief introduction, your skills, why you want to join NOVASPARK_ZW TECH..."></textarea>
+              </div>
+              <div class="form-group full-width">
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 1rem;">Submit Application →</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<%- include('partials/footer') %>
