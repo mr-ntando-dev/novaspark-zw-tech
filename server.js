@@ -52,6 +52,7 @@ app.get('/blog',      (req, res) => res.render('blog'));
 app.get('/portfolio', (req, res) => res.render('portfolio'));
 app.get('/status',    (req, res) => res.render('status'));
 app.get('/faq',       (req, res) => res.render('faq'));
+app.get('/developers',(req, res) => res.render('developers'));
 
 app.post('/careers/apply', upload.single('cv'), (req, res) => {
   if (!req.file) return res.status(400).json({ success: false, message: 'No file uploaded' });
@@ -97,8 +98,7 @@ app.post('/newsletter', (req, res) => {
 
 // Quick quote requests
 let quotes = [];
-app.post('/quote', (req, res) => {
-  const q = { id: Date.now(), ...req.body, date: new Date().toISOString() };
+app.post('/quote', (req, res) => {  const q = { id: Date.now(), ...req.body, date: new Date().toISOString() };
   quotes.push(q);
   contacts.push({
     id: q.id,
@@ -112,6 +112,32 @@ app.post('/quote', (req, res) => {
   });
   console.log('New quote request:', q);
   res.json({ success: true, message: "Quote received! We'll WhatsApp you within 2 hours." });
+});
+
+// Developer sign-ups
+let developers = [];
+app.post('/developers/join', (req, res) => {
+  const dev = {
+    id: Date.now(),
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone || '',
+    role: req.body.role,
+    github: req.body.github || '',
+    portfolio: req.body.portfolio || '',
+    stack: req.body.stack,
+    experience: req.body.experience || '',
+    availability: req.body.availability || '',
+    bio: req.body.bio,
+    date: new Date().toISOString(),
+    status: 'new'
+  };
+  if (!dev.name || !dev.email || !dev.role || !dev.stack || !dev.bio) {
+    return res.json({ success: false, message: 'Please fill in all required fields.' });
+  }
+  developers.push(dev);
+  console.log('New developer sign-up:', dev);
+  res.json({ success: true, message: "Welcome to the team! We'll add you to the WhatsApp group within 24 hours." });
 });
 
 app.get('/admin/login', (req, res) => res.render('admin/login', { error: null }));
@@ -133,6 +159,7 @@ app.get('/admin', adminAuth, (req, res) => {
     applications,
     contacts,
     subscribers,
+    developers,
     newApps: applications.filter(a => a.status === 'new').length,
     newContacts: contacts.filter(c => !c.read).length
   });
@@ -140,6 +167,17 @@ app.get('/admin', adminAuth, (req, res) => {
 
 app.get('/admin/applications', adminAuth, (req, res) => {
   res.render('admin/applications', { applications });
+});
+
+app.get('/admin/developers', adminAuth, (req, res) => {
+  res.render('admin/developers', { developers });
+});
+
+app.post('/admin/developers/:id/status', adminAuth, (req, res) => {
+  const id = parseInt(req.params.id);
+  const dev = developers.find(d => d.id === id);
+  if (dev) dev.status = req.body.status;
+  res.json({ success: true });
 });
 
 app.post('/admin/applications/:id/status', adminAuth, (req, res) => {

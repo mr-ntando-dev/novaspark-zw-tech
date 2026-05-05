@@ -15,6 +15,7 @@
     <div class="sidebar-nav">
       <a href="/admin" class="nav-item active">🏠 Dashboard</a>
       <a href="/admin/applications" class="nav-item">📄 Applications <% if(newApps>0){%><span class="badge"><%=newApps%></span><%}%></a>
+      <a href="/admin/developers" class="nav-item">👨‍💻 Developers</a>
       <a href="/admin/contacts" class="nav-item">💬 Messages <% if(newContacts>0){%><span class="badge"><%=newContacts%></span><%}%></a>
       <a href="/admin/subscribers" class="nav-item">📧 Subscribers</a>
       <a href="/" class="nav-item" target="_blank">🌐 View Site</a>
@@ -35,11 +36,15 @@
         <div class="stat-lbl">New (Unreviewed)</div>
       </div>
       <div class="stat-card">
+        <div class="stat-val" style="color:#b388ff"><%=developers.length%></div>
+        <div class="stat-lbl">Developer Sign-ups</div>
+      </div>
+      <div class="stat-card">
         <div class="stat-val" style="color:#00e676"><%=contacts.length%></div>
         <div class="stat-lbl">Contact Messages</div>
       </div>
       <div class="stat-card">
-        <div class="stat-val" style="color:#b388ff"><%=subscribers.length%></div>
+        <div class="stat-val" style="color:#00e5ff"><%=subscribers.length%></div>
         <div class="stat-lbl">Subscribers</div>
       </div>
     </div>

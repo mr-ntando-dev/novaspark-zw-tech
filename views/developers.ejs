@@ -1,0 +1,320 @@
+<%- include('partials/header') %>
+
+  <!-- HERO -->
+  <section class="section" style="padding-top: 8rem;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Join the <span class="highlight">Developer Community</span></h2>
+        <p>You don't need a vacancy to work with us. If you can build things, we want you in our circle.</p>
+      </div>
+
+      <!-- Dev stats -->
+      <div class="stats-bar" style="margin-bottom: 4rem;">
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="40" data-suffix="+">0</span></div>
+          <div class="stat-label">Active Devs</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="12" data-suffix="">0</span></div>
+          <div class="stat-label">Open Source Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="counter" data-target="5" data-suffix="">0</span></div>
+          <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">Free</div>
+          <div class="stat-label">To Join</div>
+        </div>
+      </div>
+
+      <!-- Two paths -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 5rem;">
+
+        <div class="service-card" style="border-color: rgba(0,229,255,.3); position: relative; overflow: hidden;">
+          <div style="position:absolute;top:0;right:0;background:linear-gradient(135deg,#00e5ff,#7c4dff);color:#000;font-family:var(--font-display);font-size:.7rem;font-weight:700;padding:.3rem .8rem;border-radius:0 12px 0 8px;letter-spacing:.05em">RECOMMENDED</div>
+          <div class="service-icon">👨‍💻</div>
+          <h3>Freelance Collaborator</h3>
+          <p style="color:var(--text-dim);margin:.75rem 0 1rem">Get referred to client projects that match your stack. We handle the sales, you build the product. Revenue share on every project you deliver.</p>
+          <ul style="color:var(--text-dim);padding-left:1.2rem;line-height:2.1;margin-bottom:1.5rem">
+            <li>Get paid for real client work</li>
+            <li>Choose projects that fit your skills</li>
+            <li>No minimum hours or commitments</li>
+            <li>Revenue share: 60–70% to you</li>
+            <li>We handle invoicing and client comms</li>
+          </ul>
+          <a href="#join-form" class="btn-primary" style="display:inline-block">Apply as Collaborator →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🌍</div>
+          <h3>Open Source Contributor</h3>
+          <p style="color:var(--text-dim);margin:.75rem 0 1rem">Contribute to our open-source tools and internal projects. Build your portfolio, get credit, and earn referral bonuses when your contributions get used in production.</p>
+          <ul style="color:var(--text-dim);padding-left:1.2rem;line-height:2.1;margin-bottom:1.5rem">
+            <li>Access to private project repos</li>
+            <li>Credited in production codebases</li>
+            <li>GitHub profile boost</li>
+            <li>Community recognition + badges</li>
+            <li>Path to paid collaborator role</li>
+          </ul>
+          <a href="#join-form" class="btn-secondary" style="display:inline-block">Join as Contributor →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎓</div>
+          <h3>Student Developer</h3>
+          <p style="color:var(--text-dim);margin:.75rem 0 1rem">Still studying? Even better. We take students seriously. Work on live systems, get mentored by senior devs, and build a portfolio that actually gets you hired.</p>
+          <ul style="color:var(--text-dim);padding-left:1.2rem;line-height:2.1;margin-bottom:1.5rem">
+            <li>Mentorship from senior engineers</li>
+            <li>Real production experience</li>
+            <li>Reference letter on completion</li>
+            <li>Flexible around your studies</li>
+            <li>Small stipend for active contributors</li>
+          </ul>
+          <a href="#join-form" class="btn-secondary" style="display:inline-block">Apply as Student →</a>
+        </div>
+
+      </div>
+
+      <!-- What we're building -->
+      <div style="margin-bottom: 5rem;">
+        <div class="section-header">
+          <h2>What We're <span class="highlight">Building</span></h2>
+          <p>Current projects looking for contributors and collaborators.</p>
+        </div>
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem">
+              <span class="vacancy-tag">🔴 Active</span>
+              <span style="color:var(--text-dim);font-size:.82rem">Node.js / Express</span>
+            </div>
+            <h3 style="margin-bottom:.5rem">Bot Hosting Dashboard v2</h3>
+            <p style="color:var(--text-dim);font-size:.92rem">Rebuilding our internal bot management panel with a modern React frontend, real-time WebSocket log streaming, and a REST API.</p>
+            <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+              <span class="vacancy-tag" style="background:rgba(124,77,255,.1);color:var(--accent-glow)">React</span>
+              <span class="vacancy-tag" style="background:rgba(124,77,255,.1);color:var(--accent-glow)">Node.js</span>
+              <span class="vacancy-tag" style="background:rgba(124,77,255,.1);color:var(--accent-glow)">WebSockets</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem">
+              <span class="vacancy-tag" style="background:rgba(0,230,118,.1);color:var(--success)">🟢 Open</span>
+              <span style="color:var(--text-dim);font-size:.82rem">Python / AI</span>
+            </div>
+            <h3 style="margin-bottom:.5rem">ZW News Aggregator Bot</h3>
+            <p style="color:var(--text-dim);font-size:.92rem">AI-powered Telegram/WhatsApp bot that aggregates news from Zimbabwe's top sources, summarises with NLP, and delivers personalised digests.</p>
+            <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+              <span class="vacancy-tag" style="background:rgba(0,230,118,.1);color:var(--success)">Python</span>
+              <span class="vacancy-tag" style="background:rgba(0,230,118,.1);color:var(--success)">NLP</span>
+              <span class="vacancy-tag" style="background:rgba(0,230,118,.1);color:var(--success)">Telegram API</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem">
+              <span class="vacancy-tag" style="background:rgba(255,171,0,.1);color:var(--warning)">🟡 Planning</span>
+              <span style="color:var(--text-dim);font-size:.82rem">Full Stack</span>
+            </div>
+            <h3 style="margin-bottom:.5rem">EcoCash Payment SDK</h3>
+            <p style="color:var(--text-dim);font-size:.92rem">Open-source Node.js / Python SDK for EcoCash integration. Needs developers who understand Zimbabwean payment APIs and want to build something the whole community uses.</p>
+            <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+              <span class="vacancy-tag" style="background:rgba(255,171,0,.1);color:var(--warning)">Node.js</span>
+              <span class="vacancy-tag" style="background:rgba(255,171,0,.1);color:var(--warning)">Python</span>
+              <span class="vacancy-tag" style="background:rgba(255,171,0,.1);color:var(--warning)">Open Source</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Perks -->
+      <div style="margin-bottom: 5rem;">
+        <div class="section-header">
+          <h2>Developer <span class="highlight">Perks</span></h2>
+        </div>
+        <div class="services-grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+          <div class="service-card" style="text-align:center;padding:1.75rem 1.25rem">
+            <div class="service-icon">💸</div>
+            <h4 style="margin-bottom:.5rem">Get Paid</h4>
+            <p style="color:var(--text-dim);font-size:.9rem">Collaborators earn 60–70% revenue share on client projects they deliver.</p>
+          </div>
+          <div class="service-card" style="text-align:center;padding:1.75rem 1.25rem">
+            <div class="service-icon">🖥️</div>
+            <h4 style="margin-bottom:.5rem">Free Hosting</h4>
+            <p style="color:var(--text-dim);font-size:.9rem">Active community members get free bot or web hosting for personal projects.</p>
+          </div>
+          <div class="service-card" style="text-align:center;padding:1.75rem 1.25rem">
+            <div class="service-icon">🤝</div>
+            <h4 style="margin-bottom:.5rem">Mentorship</h4>
+            <p style="color:var(--text-dim);font-size:.9rem">Access to senior developers for code review, career advice, and technical guidance.</p>
+          </div>
+          <div class="service-card" style="text-align:center;padding:1.75rem 1.25rem">
+            <div class="service-icon">🏆</div>
+            <h4 style="margin-bottom:.5rem">Recognition</h4>
+            <p style="color:var(--text-dim);font-size:.9rem">Top contributors featured on our site and credited in production codebases.</p>
+          </div>
+          <div class="service-card" style="text-align:center;padding:1.75rem 1.25rem">
+            <div class="service-icon">🔗</div>
+            <h4 style="margin-bottom:.5rem">Network</h4>
+            <p style="color:var(--text-dim);font-size:.9rem">Private WhatsApp dev group. Real connections with ZW tech builders.</p>
+          </div>
+          <div class="service-card" style="text-align:center;padding:1.75rem 1.25rem">
+            <div class="service-icon">📜</div>
+            <h4 style="margin-bottom:.5rem">Reference Letter</h4>
+            <p style="color:var(--text-dim);font-size:.9rem">Verified reference from NOVASPARK_ZW for internships, jobs, and study applications.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOIN FORM -->
+      <div id="join-form" style="scroll-margin-top: 6rem;">
+        <div class="section-header">
+          <h2>Join the <span class="highlight">Team</span></h2>
+          <p>No CV needed. Just show us what you've built.</p>
+        </div>
+
+        <div style="background:#111827;border:1px solid rgba(0,229,255,.15);border-radius:16px;padding:2.5rem;max-width:720px;margin:0 auto">
+          <form id="devForm">
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label for="devName">Full Name *</label>
+                <input type="text" id="devName" name="name" required placeholder="Your full name">
+              </div>
+
+              <div class="form-group">
+                <label for="devEmail">Email Address *</label>
+                <input type="email" id="devEmail" name="email" required placeholder="your@email.com">
+              </div>
+
+              <div class="form-group">
+                <label for="devPhone">WhatsApp Number</label>
+                <input type="tel" id="devPhone" name="phone" placeholder="+263 7X XXX XXXX">
+              </div>
+
+              <div class="form-group">
+                <label for="devRole">I want to join as *</label>
+                <select id="devRole" name="role" required>
+                  <option value="">Select your path</option>
+                  <option value="freelance-collaborator">Freelance Collaborator (get paid)</option>
+                  <option value="opensource-contributor">Open Source Contributor</option>
+                  <option value="student-developer">Student Developer</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="devGithub">GitHub Profile URL</label>
+                <input type="url" id="devGithub" name="github" placeholder="https://github.com/yourusername">
+              </div>
+
+              <div class="form-group">
+                <label for="devPortfolio">Portfolio / Website</label>
+                <input type="url" id="devPortfolio" name="portfolio" placeholder="https://yourportfolio.com">
+              </div>
+
+              <div class="form-group full-width">
+                <label for="devStack">Your Tech Stack *</label>
+                <input type="text" id="devStack" name="stack" required placeholder="e.g. Node.js, React, Python, MongoDB, Docker...">
+              </div>
+
+              <div class="form-group full-width">
+                <label for="devXP">Years of Experience</label>
+                <select id="devXP" name="experience">
+                  <option value="">Select experience level</option>
+                  <option value="0-1">Less than 1 year (total beginner — still welcome!)</option>
+                  <option value="1-2">1–2 years</option>
+                  <option value="2-4">2–4 years</option>
+                  <option value="4+">4+ years</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="devBio">Tell us what you've built *</label>
+                <textarea id="devBio" name="bio" required rows="4" placeholder="Describe 1–2 projects you've built. Include what problem they solve, your role, and the tech you used. Links are great."></textarea>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="devAvail">Availability</label>
+                <select id="devAvail" name="availability">
+                  <option value="">How much time can you commit?</option>
+                  <option value="casual">Casual (a few hours/week)</option>
+                  <option value="parttime">Part-time (10–20 hrs/week)</option>
+                  <option value="fulltime">Full-time (40+ hrs/week)</option>
+                  <option value="project">Project-by-project basis</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem">
+                  Join NOVASPARK_ZW Developers →
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+          <div id="devSuccessMsg" style="display:none;text-align:center;padding:2rem">
+            <div style="font-size:3rem;margin-bottom:1rem">🚀</div>
+            <h3 style="font-family:var(--font-display);color:var(--primary);margin-bottom:.75rem">You're In!</h3>
+            <p style="color:var(--text-dim)">We'll review your profile and add you to the developer WhatsApp group within 24 hours. Keep building.</p>
+            <a href="https://wa.me/263786831091?text=Hi%20NOVASPARK_ZW!%20I%20just%20applied%20to%20join%20your%20developer%20community." target="_blank" class="btn-primary" style="display:inline-block;margin-top:1.5rem">💬 Say Hi on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // Counters
+    const counters = document.querySelectorAll('.counter');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || '';
+        let current = 0;
+        const step = Math.max(1, Math.ceil(target / 60));
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current + suffix;
+          if (current >= target) clearInterval(timer);
+        }, 20);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => io.observe(c));
+
+    // Dev signup form
+    document.getElementById('devForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this));
+      const btn = this.querySelector('button[type=submit]');
+      btn.textContent = 'Submitting...';
+      btn.disabled = true;
+      try {
+        const res = await fetch('/developers/join', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.success) {
+          document.getElementById('devForm').style.display = 'none';
+          document.getElementById('devSuccessMsg').style.display = 'block';
+        } else {
+          btn.textContent = 'Join NOVASPARK_ZW Developers →';
+          btn.disabled = false;
+          alert(json.message || 'Something went wrong. Try again.');
+        }
+      } catch(err) {
+        btn.textContent = 'Join NOVASPARK_ZW Developers →';
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+<%- include('partials/footer') %>

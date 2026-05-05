@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developers — NOVASPARK_ZW Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+  <%- include('layout') %>
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-logo">NOVASPARK_ZW <span>Admin Panel</span></div>
+    <div class="sidebar-nav">
+      <a href="/admin" class="nav-item">🏠 Dashboard</a>
+      <a href="/admin/applications" class="nav-item">📄 Applications</a>
+      <a href="/admin/developers" class="nav-item active">👨‍💻 Developers</a>
+      <a href="/admin/contacts" class="nav-item">💬 Messages</a>
+      <a href="/admin/subscribers" class="nav-item">📧 Subscribers</a>
+      <a href="/" class="nav-item" target="_blank">🌐 View Site</a>
+      <a href="/admin/logout" class="nav-item" style="color:#ff5252">🚪 Logout</a>
+    </div>
+  </nav>
+  <main class="main">
+    <div class="page-title">👨‍💻 Developer Sign-ups (<%= developers.length %>)</div>
+
+    <% if(developers.length === 0){ %>
+      <div class="card"><p class="empty">No developer applications yet. They'll appear here once devs sign up on /developers.</p></div>
+    <% } else { %>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Developer</th>
+            <th>Role</th>
+            <th>Stack</th>
+            <th>Experience</th>
+            <th>Availability</th>
+            <th>Links</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% developers.slice().reverse().forEach((d, i) => { %>
+          <tr>
+            <td style="color:#94a3b8;font-size:.85rem"><%=developers.length - i%></td>
+            <td>
+              <strong><%=d.name%></strong><br>
+              <a href="mailto:<%=d.email%>" style="color:#00e5ff;font-size:.83rem"><%=d.email%></a>
+              <% if(d.phone){ %><br><span style="color:#94a3b8;font-size:.82rem">📞 <%=d.phone%></span><% } %>
+            </td>
+            <td>
+              <span class="badge-status <%=d.role==='freelance-collaborator'?'badge-shortlisted':d.role==='student-developer'?'badge-reviewed':'badge-new'%>" style="white-space:nowrap;font-size:.75rem">
+                <%=d.role%>
+              </span>
+            </td>
+            <td style="color:#94a3b8;font-size:.88rem;max-width:180px"><%=d.stack%></td>
+            <td style="color:#94a3b8;font-size:.88rem"><%=d.experience||'—'%> yrs</td>
+            <td style="color:#94a3b8;font-size:.88rem"><%=d.availability||'—'%></td>
+            <td style="white-space:nowrap">
+              <% if(d.github){ %><a href="<%=d.github%>" target="_blank" class="btn-sm btn-ghost" style="margin-bottom:.3rem">GitHub</a><% } %>
+              <% if(d.portfolio){ %><a href="<%=d.portfolio%>" target="_blank" class="btn-sm btn-ghost">Portfolio</a><% } %>
+            </td>
+            <td style="color:#94a3b8;font-size:.83rem"><%=new Date(d.date).toLocaleDateString('en-GB')%></td>
+            <td>
+              <select class="status-select" onchange="updateDevStatus(<%=d.id%>, this.value)">
+                <option value="new"<%=d.status==='new'?' selected':''%>>🔵 New</option>
+                <option value="contacted"<%=d.status==='contacted'?' selected':''%>>🟡 Contacted</option>
+                <option value="active"<%=d.status==='active'?' selected':''%>>🟢 Active</option>
+                <option value="declined"<%=d.status==='declined'?' selected':''%>>🔴 Declined</option>
+              </select>
+            </td>
+          </tr>
+          <% if(d.bio){ %>
+          <tr>
+            <td colspan="9" style="padding:.4rem 1rem 1rem 3rem;color:#94a3b8;font-size:.87rem;font-style:italic;border-bottom:1px solid rgba(0,229,255,.06)">
+              💬 "<%=d.bio%>"
+            </td>
+          </tr>
+          <% } %>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+  </main>
+  <script>
+    function updateDevStatus(id, status) {
+      fetch('/admin/developers/' + id + '/status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status })
+      });
+    }
+  </script>
+</body>
+</html>
